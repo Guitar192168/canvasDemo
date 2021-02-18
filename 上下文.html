@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <canvas id="demo" width="600" height="600" style="background-color: pink;"></canvas>
+    <script>
+        // 获取canvas标签 ----找到画笔对象
+        var canvas = document.getElementById('demo')
+
+        //拿到canvas上下文         上下文对象(画笔)
+        // '2d'
+        //3d 则是加  webgl
+        var ctx = canvas.getContext('2d');
+        console.log(ctx, 'ctx')
+
+        //最好加上  设置开始路径和结束路径 好比写数字1和2的时候，如果不加这个开始和结束，就会出现写1，2的练笔
+        ctx.beginPath()//设置开始路径
+
+        //开始绘制
+        ctx.moveTo(100, 100) //把笔画移动到100,100
+        ctx.lineTo(100, 300) //从画笔的位置，画一条直线到200,100点
+        ctx.lineTo(300, 200) //从当前位置,再画一条直线到100,200
+        ctx.lineTo(300, 400)
+        // ctx.lineTo(100, 100)
+
+        ctx.closePath()//设置结束路径
+
+
+
+        ctx.lineCap = 'round'; //起始路径的线段边缘设置为圆角
+
+
+        // ctx.lineJoin = 'round'// 两条线相交时 拐角类型
+        ctx.miterLimit = 3;  //设置斜切部分不要那么尖锐
+
+
+
+        ctx.strokeStyle = 'skyBlue';
+        ctx.lineWidth = 20;
+
+
+
+        ctx.stroke() //描边 的意思 ，有了这个才会有颜色
+
+
+
+
+        // // 3.绘制路径
+        // ctx.rect(50, 50, 300, 300)
+
+
+        // // 4.填充
+        // ctx.fillStyle = 'hotpink';
+        // ctx.fill()
+
+
+        // // 5.描边，渲染路径
+        // // 修改描边的宽度
+        // ctx.lineWidth = 10;
+        // // 修改描边颜色
+        // ctx.strokeStyle = 'skyblue';
+        // ctx.stroke()
+    </script>
+</body>
+
+</html>
